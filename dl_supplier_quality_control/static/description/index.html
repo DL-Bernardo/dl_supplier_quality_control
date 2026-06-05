@@ -1,59 +1,156 @@
-<section class="oe_container">
-    <div class="oe_row oe_spaced">
-        <h2 class="oe_slogan" style="color:#017e84;">DL Supplier Quality Control</h2>
-        <h3 class="oe_slogan">Avaliação Automática do Desempenho dos seus Fornecedores (Vendor Rating)</h3>
-        <div class="oe_span12 text-center">
-            <p class="oe_mt32" style="font-size: 1.2em;">
-                Tenha controlo total sobre as falhas de entrega! Este módulo monitoriza todas as entradas no armazém,
-                compara o que foi pedido com o que foi entregue, e alerta automaticamente a sua equipa quando um
-                fornecedor não cumpre os padrões de qualidade acordados.
-            </p>
-        </div>
-    </div>
-</section>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DL Supplier Quality Control</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .dl-vendor-container {
+            font-family: 'Inter', sans-serif !important;
+            color: #2c3e50;
+            background-color: #ffffff;
+        }
+        .dl-main-title {
+            font-weight: 700 !important;
+            color: #017e84 !important;
+        }
+        .dl-accent-color {
+            color: #017e84 !important;
+        }
+        .dl-btn-accent {
+            background-color: #017e84 !important;
+            border-color: #017e84 !important;
+            color: #ffffff !important;
+            transition: all 0.3s ease;
+        }
+        .dl-btn-accent:hover {
+            background-color: #015f64 !important;
+            border-color: #015f64 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(1, 126, 132, 0.2);
+        }
+        .dl-vendor-card {
+            border: 1px solid #e9ecef;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.02);
+            border-radius: 12px;
+            background: #ffffff;
+            transition: all 0.3s ease;
+        }
+        .dl-vendor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.06);
+            border-color: #017e84;
+        }
+        .dl-highlight-box {
+            background: linear-gradient(135deg, rgba(1, 126, 132, 0.03) 0%, rgba(1, 126, 132, 0.08) 100%);
+            border-left: 4px solid #017e84;
+            border-radius: 0 12px 12px 0;
+        }
+        .dl-badge-red {
+            background-color: #dc3545;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
 
-<section class="oe_container oe_dark">
-    <div class="oe_row oe_spaced">
-        <h3 class="oe_slogan" style="color:#212529;">Funcionalidades Principais</h3>
-        <div class="oe_span4 text-center mt-4">
-            <i class="fa fa-balance-scale fa-4x" style="color: #017e84;"></i>
-            <h4 class="oe_mt16">Cálculo de Diferenças</h4>
-            <p>Veja instantaneamente na tela e no PDF se o fornecedor entregou mercadoria a menos do que a Ordem de Compra exigia.</p>
+<div class="container-fluid dl-vendor-container px-0">
+    
+    <section class="oe_container px-3 py-5 text-center">
+        <div class="row py-4">
+            <div class="col-12">
+                <span class="badge mb-2 px-3 py-2" style="background-color: rgba(1, 126, 132, 0.1); color: #017e84; font-weight: 600; border-radius: 20px;">Módulo Odoo 17</span>
+                <h2 class="oe_slogan dl-main-title mb-3" style="font-size: 2.8rem; letter-spacing: -0.5px;">DL Supplier Quality Control</h2>
+                <h3 class="oe_slogan text-muted mb-4" style="font-size: 1.4rem; font-weight: 400;">Avaliação Automática do Desempenho dos seus Fornecedores (Vendor Rating)</h3>
+            </div>
+            <div class="col-lg-8 offset-lg-2 mt-2">
+                <p class="lead text-secondary" style="font-size: 1.2rem; line-height: 1.8;">
+                    Tenha controlo total sobre as falhas de entrega! Este módulo monitoriza todas as entradas no armazém, 
+                    compara o que foi pedido com o que foi entregue, e alerta automaticamente a sua equipa quando um 
+                    fornecedor não cumpre os padrões de qualidade acordados.
+                </p>
+            </div>
         </div>
-        <div class="oe_span4 text-center mt-4">
-            <i class="fa fa-cogs fa-4x" style="color: #017e84;"></i>
-            <h4 class="oe_mt16">Regras Automáticas</h4>
-            <p>Configure regras (ex: "Taxa de cumprimento inferior a 90%") e deixe que o Odoo notifique os gestores através das Atividades quando a regra for quebrada.</p>
-        </div>
-        <div class="oe_span4 text-center mt-4">
-            <i class="fa fa-bar-chart fa-4x" style="color: #017e84;"></i>
-            <h4 class="oe_mt16">Dashboards (Vendor Rating)</h4>
-            <p>Relatório dinâmico em Pivot com o histórico total das entregas. Identifique imediatamente os piores e os melhores parceiros de negócio.</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section class="oe_container">
-    <div class="oe_row oe_spaced">
-        <h3 class="oe_slogan" style="color:#212529;">Ficha de Fornecedor Inteligente</h3>
-        <div class="oe_span12">
-            <p style="font-size: 1.1em; text-align: center;">
-                Na ficha de cada fornecedor (Contacto), o sistema adiciona uma métrica de <b>Taxa de Cumprimento Global</b>. 
-                Se o fornecedor violar as Regras de Qualidade, o sistema coloca um alerta visual a vermelho de <b>"Falhas Recorrentes"</b>, 
-                ajudando o departamento de Compras a tomar melhores decisões.
-            </p>
+    <section class="oe_container oe_dark px-4 py-5" style="background-color: #f8f9fa; border-radius: 16px;">
+        <div class="row text-center py-3">
+            <div class="col-12 mb-5">
+                <h3 class="oe_slogan text-dark font-weight-bold" style="font-size: 2rem; font-family: 'Inter', sans-serif;">Funcionalidades Principais</h3>
+            </div>
+            
+            <div class="col-md-4 mb-4 d-flex">
+                <div class="p-4 dl-vendor-card w-100 text-center">
+                    <div class="mb-4 d-inline-block p-3 rounded-circle" style="background-color: rgba(1, 126, 132, 0.05);">
+                        <i class="fa fa-balance-scale fa-3x dl-accent-color"></i>
+                    </div>
+                    <h4 class="font-weight-bold mb-3" style="font-size: 1.25rem; color: #212529;">Cálculo de Diferenças</h4>
+                    <p class="text-muted" style="font-size: 0.95rem; line-height: 1.6;">Veja instantaneamente na tela e no PDF se o fornecedor entregou mercadoria a menos do que a Ordem de Compra exigia.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4 d-flex">
+                <div class="p-4 dl-vendor-card w-100 text-center">
+                    <div class="mb-4 d-inline-block p-3 rounded-circle" style="background-color: rgba(1, 126, 132, 0.05);">
+                        <i class="fa fa-cogs fa-3x dl-accent-color"></i>
+                    </div>
+                    <h4 class="font-weight-bold mb-3" style="font-size: 1.25rem; color: #212529;">Regras Automáticas</h4>
+                    <p class="text-muted" style="font-size: 0.95rem; line-height: 1.6;">Configure regras (ex: "Taxa de cumprimento inferior a 90%") e deixe que o Odoo notifique os gestores através das Atividades quando a regra for quebrada.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4 d-flex">
+                <div class="p-4 dl-vendor-card w-100 text-center">
+                    <div class="mb-4 d-inline-block p-3 rounded-circle" style="background-color: rgba(1, 126, 132, 0.05);">
+                        <i class="fa fa-bar-chart fa-3x dl-accent-color"></i>
+                    </div>
+                    <h4 class="font-weight-bold mb-3" style="font-size: 1.25rem; color: #212529;">Dashboards Avançados</h4>
+                    <p class="text-muted" style="font-size: 0.95rem; line-height: 1.6;">Relatório dinâmico em Pivot com o histórico total das entregas. Identifique imediatamente os piores e os melhores parceiros de negócio.</p>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="oe_container oe_dark">
-    <div class="oe_row oe_spaced text-center">
-        <h2 class="oe_slogan">Quer melhorar a Qualidade do seu Armazém?</h2>
-        <p class="oe_mt16" style="font-size: 1.1em;">
-            Módulo testado e desenvolvido com as melhores práticas arquitetónicas do Odoo.
-        </p>
-        <div class="oe_mt32">
-            <a href="mailto:seu-email@dominio.com" class="btn btn-primary btn-lg" style="background-color: #017e84; border-color: #017e84;"><i class="fa fa-envelope"></i> Fale Connosco</a>
+    <section class="oe_container px-3 py-5">
+        <div class="row align-items-center py-4">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="p-4 p-md-5 dl-highlight-box">
+                    <h3 class="font-weight-bold text-dark mb-3" style="font-size: 1.6rem;"><i class="fa fa-id-card dl-accent-color mr-2"></i> Ficha de Fornecedor Inteligente</h3>
+                    <p class="text-secondary mb-0" style="font-size: 1.1rem; line-height: 1.7; text-align: justify;">
+                        Na ficha de cada fornecedor (Contacto), o sistema adiciona uma métrica inteligente de <strong>Taxa de Cumprimento Global</strong>. 
+                        Se o fornecedor violar as Regras de Qualidade parametrizadas, o Odoo exibe um alerta visual destacado a vermelho de <span class="dl-badge-red">Falhas Recorrentes</span>, 
+                        fornecendo dados valiosos para o departamento de Compras mitigar riscos e tomar melhores decisões de aprovisionamento.
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section class="oe_container oe_dark text-center px-3 py-5" style="background-color: #f8f9fa; border-radius: 16px; border-top: 4px solid #017e84;">
+        <div class="row py-3">
+            <div class="col-12">
+                <h2 class="font-weight-bold mb-3" style="font-size: 2rem; color: #212529;">Quer melhorar a Qualidade do seu Armazém?</h2>
+                <p class="lead text-muted mb-4" style="font-size: 1.1rem;">
+                    Módulo testado, otimizado e desenvolvido sob as estritas regras de arquitetura e desempenho do ecossistema Odoo.
+                </p>
+                <div class="mt-4">
+                    <a href="mailto:suporte@digitalub.ao" class="btn btn-primary btn-lg dl-btn-accent shadow px-5 py-3" style="font-weight: 600; border-radius: 30px; font-size: 1.1rem;">
+                        <i class="fa fa-envelope mr-2"></i> Fale Connosco
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</div>
+
+</body>
+</html>
