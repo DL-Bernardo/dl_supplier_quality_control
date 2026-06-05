@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Ações (O que os menus vão abrir) -->
+    <record id="action_supplier_delivery_history" model="ir.actions.act_window">
+        <field name="name">Análise de Entregas (Vendor Rating)</field>
+        <field name="res_model">supplier.delivery.history</field>
+        <field name="view_mode">tree,pivot</field>
+    </record>
+
+    <record id="action_supplier_quality_rule" model="ir.actions.act_window">
+        <field name="name">Regras de Qualidade</field>
+        <field name="res_model">supplier.quality.rule</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menus no Módulo de Compras (Purchase) -->
+    <menuitem id="menu_supplier_quality_root" 
+              name="Vendor Rating" 
+              parent="purchase.menu_purchase_root" 
+              sequence="50"/>
+
+    <menuitem id="menu_supplier_delivery_history" 
+              name="Análise de Entregas" 
+              parent="menu_supplier_quality_root" 
+              action="action_supplier_delivery_history" 
+              sequence="1"/>
+
+    <menuitem id="menu_supplier_quality_rule" 
+              name="Regras de Alerta" 
+              parent="menu_supplier_quality_root" 
+              action="action_supplier_quality_rule" 
+              sequence="2"/>
+</odoo>

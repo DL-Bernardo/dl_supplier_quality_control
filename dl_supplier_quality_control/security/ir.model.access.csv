@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_supplier_delivery_history,access.supplier.delivery.history,model_supplier_delivery_history,stock.group_stock_user,1,1,1,1
+access_supplier_quality_rule,access.supplier.quality.rule,model_supplier_quality_rule,stock.group_stock_manager,1,1,1,1

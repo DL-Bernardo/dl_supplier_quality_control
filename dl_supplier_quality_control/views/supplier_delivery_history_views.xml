@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vista de Lista (Tree) -->
+    <record id="view_supplier_delivery_history_tree" model="ir.ui.view">
+        <field name="name">supplier.delivery.history.tree</field>
+        <field name="model">supplier.delivery.history</field>
+        <field name="arch" type="xml">
+            <tree string="Histórico de Entregas" create="0" edit="0" delete="0" decoration-danger="is_incomplete">
+                <field name="date_done"/>
+                <field name="partner_id"/>
+                <field name="purchase_id"/>
+                <field name="product_id"/>
+                <field name="qty_demanded"/>
+                <field name="qty_received"/>
+                <field name="qty_difference"/>
+                <field name="compliance_percent" widget="percentage"/>
+                <field name="is_incomplete" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista Dinâmica (Pivot) -->
+    <record id="view_supplier_delivery_history_pivot" model="ir.ui.view">
+        <field name="name">supplier.delivery.history.pivot</field>
+        <field name="model">supplier.delivery.history</field>
+        <field name="arch" type="xml">
+            <pivot string="Análise de Fornecedores" sample="1">
+                <field name="partner_id" type="row"/>
+                <field name="date_done" type="col" interval="month"/>
+                <field name="qty_demanded" type="measure"/>
+                <field name="qty_received" type="measure"/>
+                <field name="qty_difference" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+</odoo>

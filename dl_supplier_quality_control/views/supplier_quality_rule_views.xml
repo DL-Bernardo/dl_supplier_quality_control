@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_supplier_quality_rule_form" model="ir.ui.view">
+        <field name="name">supplier.quality.rule.form</field>
+        <field name="model">supplier.quality.rule</field>
+        <field name="arch" type="xml">
+            <form string="Regra de Qualidade">
+                <sheet>
+                    <widget name="web_ribbon" title="Arquivado" bg_color="bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Ex: Regra de Falha Crítica"/></h1>
+                    </div>
+                    <group>
+                        <group string="Condições de Falha">
+                            <field name="min_incomplete_deliveries"/>
+                            <field name="period_days"/>
+                            <field name="min_compliance_rate" widget="percentage"/>
+                            <field name="only_critical_products"/>
+                        </group>
+                        <group string="Ações a Executar">
+                            <field name="action_mark_supplier"/>
+                            <field name="notify_user_ids" widget="many2many_tags" placeholder="Selecione os gestores a notificar..."/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_supplier_quality_rule_tree" model="ir.ui.view">
+        <field name="name">supplier.quality.rule.tree</field>
+        <field name="model">supplier.quality.rule</field>
+        <field name="arch" type="xml">
+            <tree string="Regras de Qualidade">
+                <field name="name"/>
+                <field name="min_incomplete_deliveries"/>
+                <field name="period_days"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

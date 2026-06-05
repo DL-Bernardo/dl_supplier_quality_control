@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Herdar o Relatório PDF de Operações (Picking) -->
+    <template id="report_picking_inherit_quality" inherit_id="stock.report_picking">
+        
+        <!-- 1. Adicionar o Título da Coluna no Cabeçalho da Tabela -->
+        <xpath expr="//table[@t-if='o.move_line_ids and o.move_ids_without_package']//thead//th[@name='th_product']" position="after">
+            <th name="th_diff" class="text-center" t-if="o.picking_type_code == 'incoming'">
+                <strong>Diferença</strong>
+            </th>
+        </xpath>
+
+        <!-- 2. Adicionar o Valor da Diferença na Linha do Produto -->
+        <xpath expr="//table[@t-if='o.move_line_ids and o.move_ids_without_package']//tbody//tr//td[1]" position="after">
+            <td class="text-center" t-if="o.picking_type_code == 'incoming'">
+                <!-- No Odoo 17 o loop do report_picking usa a variável 'ml' (stock.move.line) -->
+                <t t-set="move_obj" t-value="ml.move_id if ml else move"/>
+                <t t-if="move_obj">
+                    <span t-esc="move_obj.qty_difference" t-options="{'widget': 'float', 'precision': 2}"/>
+                    <t t-if="move_obj.qty_difference &lt; 0">
+                        <span style="color: red; font-weight: bold;"> (Falta)</span>
+                    </t>
+                </t>
+            </td>
+        </xpath>
+        
+    </template>
+</odoo>

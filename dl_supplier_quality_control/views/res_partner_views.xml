@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_inherit_quality" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.quality</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Ribbon (Fita) no canto superior direito -->
+            <xpath expr="//widget[@name='web_ribbon']" position="after">
+                <widget name="web_ribbon" title="Falhas Recorrentes" bg_color="text-bg-danger" invisible="not is_frequent_failer"/>
+                <field name="is_frequent_failer" invisible="1"/>
+            </xpath>
+            
+            <!-- Botão Estatístico com a % de Cumprimento -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" type="object" name="action_view_partner_invoices" icon="fa-truck">
+                    <div class="o_stat_info">
+                        <field name="delivery_compliance_rate" class="o_stat_value" widget="percentage"/>
+                        <span class="o_stat_text">Cumprimento</span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>
