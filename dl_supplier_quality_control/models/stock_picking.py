@@ -27,7 +27,7 @@ class StockPicking(models.Model):
                 'picking_id': picking.id,
                 'purchase_id': picking.purchase_id.id if picking.purchase_id else False,
                 'date_done': picking.date_done or fields.Datetime.now(),
-                'qty_demanded': move.product_uom_qty,
+                'qty_demanded': move.purchase_line_id.product_qty if move.purchase_line_id else move.product_uom_qty,
                 'qty_received': move.quantity,
             })
             
@@ -89,12 +89,24 @@ class StockPicking(models.Model):
         """
         
         # Adiciona uma "Atividade" (To-Do / Tarefa) para cada utilizador configurado na regra
+        activity_type_id = self.env.ref('mail.mail_activity_data_todo').id
+        res_model_id = self.env['ir.model']._get('res.partner').id
+
         for user in rule.notify_user_ids:
-            self.env['mail.activity'].create({
-                'res_id': partner.id,
-                'res_model_id': self.env['ir.model']._get('res.partner').id,
-                'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
-                'summary': summary,
-                'note': note,
-                'user_id': user.id,
-            })
+            # Verifica se já existe uma atividade pendente para não duplicar
+            existing_activity = self.env['mail.activity'].search_count([
+                ('res_id', '=', partner.id),
+                ('res_model_id', '=', res_model_id),
+                ('activity_type_id', '=', activity_type_id),
+                ('user_id', '=', user.id),
+            ])
+
+            if existing_activity == 0:
+                self.env['mail.activity'].create({
+                    'res_id': partner.id,
+                    'res_model_id': res_model_id,
+                    'activity_type_id': activity_type_id,
+                    'summary': summary,
+                    'note': note,
+                    'user_id': user.id,
+                })
