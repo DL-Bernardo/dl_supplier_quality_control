@@ -14,11 +14,25 @@ class ResPartner(models.Model):
     )
 
     def _compute_compliance_rate(self):
+        histories_data = self.env['supplier.delivery.history'].read_group(
+            [('partner_id', 'in', self.ids)],
+            ['qty_demanded:sum', 'qty_received:sum'],
+            ['partner_id']
+        )
+
+        history_map = {
+            data['partner_id'][0]: {
+                'qty_demanded': data['qty_demanded'],
+                'qty_received': data['qty_received']
+            }
+            for data in histories_data
+        }
+
         for partner in self:
-            histories = self.env['supplier.delivery.history'].search([('partner_id', '=', partner.id)])
-            if histories:
-                total_demanded = sum(histories.mapped('qty_demanded'))
-                total_received = sum(histories.mapped('qty_received'))
+            partner_data = history_map.get(partner.id)
+            if partner_data:
+                total_demanded = partner_data['qty_demanded']
+                total_received = partner_data['qty_received']
                 if total_demanded > 0:
                     partner.delivery_compliance_rate = (total_received / total_demanded) * 100
                 else:
