@@ -1,156 +1,814 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DL Supplier Quality Control</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        .dl-vendor-container {
-            font-family: 'Inter', sans-serif !important;
-            color: #2c3e50;
-            background-color: #ffffff;
-        }
-        .dl-main-title {
-            font-weight: 700 !important;
-            color: #017e84 !important;
-        }
-        .dl-accent-color {
-            color: #017e84 !important;
-        }
-        .dl-btn-accent {
-            background-color: #017e84 !important;
-            border-color: #017e84 !important;
-            color: #ffffff !important;
-            transition: all 0.3s ease;
-        }
-        .dl-btn-accent:hover {
-            background-color: #015f64 !important;
-            border-color: #015f64 !important;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(1, 126, 132, 0.2);
-        }
-        .dl-vendor-card {
-            border: 1px solid #e9ecef;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.02);
-            border-radius: 12px;
-            background: #ffffff;
-            transition: all 0.3s ease;
-        }
-        .dl-vendor-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.06);
-            border-color: #017e84;
-        }
-        .dl-highlight-box {
-            background: linear-gradient(135deg, rgba(1, 126, 132, 0.03) 0%, rgba(1, 126, 132, 0.08) 100%);
-            border-left: 4px solid #017e84;
-            border-radius: 0 12px 12px 0;
-        }
-        .dl-badge-red {
-            background-color: #dc3545;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 0.9em;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>DL Supplier Quality Control - Vendor Rating & Delivery Performance - DIGITALUB ANGOLA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0052cc;
+      --primary-dark: #07152b;
+      --primary-light: #e8f0fe;
+      --accent-cyan: #00d2ff;
+      --accent-gradient: linear-gradient(135deg, #0052cc 0%, #00d2ff 100%);
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --border-focus: #94a3b8;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --success: #10b981;
+      --success-light: #ecfdf5;
+      --warning: #f59e0b;
+      --purple: #7c3aed;
+      --purple-light: #f5f3ff;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text-main);
+      background-color: #ffffff;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    .dl-wrapper {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 30px 20px 80px;
+    }
+    /* Trust Badges Bar */
+    .dl-badges-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+      align-items: center;
+    }
+    .dl-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .badge-community { background: var(--success-light); color: #047857; border: 1px solid #a7f3d0; }
+    .badge-enterprise { background: var(--purple-light); color: var(--purple); border: 1px solid #ddd6fe; }
+    .badge-odoosh { background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd; }
+    .badge-i18n { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+    .badge-support { background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
+
+    /* Hero Title & Lead */
+    .dl-hero-header {
+      margin-bottom: 24px;
+    }
+    .dl-hero-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.22;
+      margin: 0 0 14px;
+      letter-spacing: -0.6px;
+    }
+    .dl-hero-lead {
+      font-size: 1.12rem;
+      color: #475569;
+      line-height: 1.65;
+      margin: 0 0 20px;
+    }
+    .dl-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+    .dl-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 9999px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .dl-btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(0, 82, 204, 0.25);
+    }
+    .dl-btn-primary:hover {
+      background: #0043a8;
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+    .dl-btn-secondary {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid var(--border);
+    }
+    .dl-btn-secondary:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    /* Hero Banner */
+    .dl-hero-banner {
+      max-width: 860px;
+      margin: 0 auto 40px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    }
+    .dl-hero-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Impact Metrics Strip */
+    .dl-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 45px;
+    }
+    .dl-metric-card {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 18px 20px;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+    .dl-metric-card:hover {
+      transform: translateY(-2px);
+      border-color: #cbd5e1;
+    }
+    .dl-metric-value {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 4px;
+      letter-spacing: -0.5px;
+    }
+    .dl-metric-label {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin: 0;
+    }
+
+    /* Section Navigation Anchor Pills */
+    .dl-nav-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 40px 0 35px;
+      padding: 8px 12px;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+    }
+    .dl-nav-link {
+      padding: 7px 16px;
+      border-radius: 9999px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .dl-nav-link:hover {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Section Headings */
+    .dl-section-heading {
+      text-align: center;
+      margin: 50px 0 32px;
+    }
+    .dl-section-heading h2 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin: 0 0 8px;
+      letter-spacing: -0.5px;
+    }
+    .dl-section-heading p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin: 0 auto;
+      max-width: 680px;
+    }
+
+    /* Feature Pillars Grid */
+    .dl-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 45px;
+    }
+    .dl-feature-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+      transition: all 0.25s ease;
+    }
+    .dl-feature-card:hover {
+      border-color: #cbd5e1;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    }
+    .dl-feature-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+    .dl-feature-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 0 0 8px;
+    }
+    .dl-feature-card p {
+      font-size: 0.93rem;
+      color: #64748b;
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    /* Walkthrough Step Cards */
+    .dl-step-box {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+    }
+    .dl-step-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 20px;
+    }
+    .dl-step-badge {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.78rem;
+      padding: 3px 12px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .dl-step-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 0 0 8px;
+    }
+    .dl-step-desc {
+      font-size: 0.95rem;
+      color: #475569;
+      margin: 0 auto 16px;
+      line-height: 1.55;
+    }
+    .dl-step-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .dl-step-highlight-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #334155;
+      background: var(--bg-light);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+    }
+
+    /* Mockup Frames */
+    .dl-mockup-frame {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+      margin: 0 auto;
+    }
+    .dl-mockup-frame.landscape {
+      max-width: 640px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+    }
+    .dl-mockup-frame.portrait {
+      max-width: 360px;
+      border: 1px solid #334155;
+      background: #0f172a;
+    }
+    .dl-mockup-bar {
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dl-mockup-bar.light {
+      background: #f1f5f9;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .dl-mockup-bar.dark {
+      background: #1e293b;
+      border-bottom: 1px solid #334155;
+    }
+    .dl-mockup-dots {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .dl-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .dl-dot-red { background: #ef4444; }
+    .dl-dot-yellow { background: #f59e0b; }
+    .dl-dot-green { background: #10b981; }
+    .dl-mockup-title {
+      margin-left: 10px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+    .dl-mockup-title.light { color: #64748b; }
+    .dl-mockup-title.dark { color: #94a3b8; }
+    .dl-mockup-content {
+      padding: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .dl-mockup-content.light { background: #ffffff; }
+    .dl-mockup-content.dark { background: #0b132b; }
+    .dl-mockup-content img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+    }
+    .dl-mockup-content.light img {
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Specifications Matrix Table */
+    .dl-specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 45px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    }
+    .dl-specs-table th, .dl-specs-table td {
+      padding: 14px 20px;
+      text-align: left;
+      font-size: 0.94rem;
+    }
+    .dl-specs-table th {
+      background: #f1f5f9;
+      color: #1e293b;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
+    }
+    .dl-specs-table tr:not(:last-child) td {
+      border-bottom: 1px solid var(--border);
+    }
+    .dl-specs-table tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+    .dl-tag-verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: #047857;
+      font-weight: 700;
+      background: #ecfdf5;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      border: 1px solid #a7f3d0;
+    }
+
+    /* FAQ Accordion Section */
+    .dl-faq-container {
+      margin-bottom: 50px;
+    }
+    .dl-faq-item {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+    .dl-faq-item h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 0 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .dl-faq-item h4::before {
+      content: "Q";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+    .dl-faq-item p {
+      font-size: 0.94rem;
+      color: #475569;
+      margin: 0;
+      line-height: 1.6;
+      padding-left: 34px;
+    }
+
+    /* Ecosystem Cross-Selling Showcase */
+    .dl-ecosystem-box {
+      background: radial-gradient(circle at 10% 20%, rgb(10, 24, 48) 0%, rgb(15, 32, 67) 90%);
+      color: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      margin: 50px 0 35px;
+      box-shadow: 0 15px 35px rgba(0, 82, 204, 0.2);
+    }
+    .dl-ecosystem-box h3 {
+      font-size: 1.65rem;
+      font-weight: 800;
+      margin: 0 0 8px;
+      color: #ffffff;
+    }
+    .dl-ecosystem-box p.dl-sub {
+      color: #94a3b8;
+      font-size: 1.02rem;
+      margin: 0 0 28px;
+    }
+    .dl-eco-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .dl-eco-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      transition: all 0.2s ease;
+    }
+    .dl-eco-card:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-2px);
+    }
+    .dl-eco-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 6px;
+    }
+    .dl-eco-card p {
+      font-size: 0.83rem;
+      color: #cbd5e1;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    /* Support & Guarantee Hub */
+    .dl-support-hub {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      margin-top: 30px;
+    }
+    .dl-support-hub h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 0 0 8px;
+      color: var(--text-main);
+    }
+    .dl-support-hub p {
+      color: #64748b;
+      margin: 0 0 18px;
+      font-size: 0.95rem;
+    }
+    .dl-support-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .dl-support-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: #334155;
+    }
+    .dl-support-list a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .dl-support-list a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .dl-footer {
+      text-align: center;
+      margin-top: 45px;
+      font-size: 0.88rem;
+      color: #94a3b8;
+    }
+    .dl-footer a {
+      color: #64748b;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .dl-footer a:hover {
+      color: var(--primary);
+    }
+  </style>
 </head>
 <body>
+  <div class="dl-wrapper">
 
-<div class="container-fluid dl-vendor-container px-0">
-    
-    <section class="oe_container px-3 py-5 text-center">
-        <div class="row py-4">
-            <div class="col-12">
-                <span class="badge mb-2 px-3 py-2" style="background-color: rgba(1, 126, 132, 0.1); color: #017e84; font-weight: 600; border-radius: 20px;">Módulo Odoo 17</span>
-                <h2 class="oe_slogan dl-main-title mb-3" style="font-size: 2.8rem; letter-spacing: -0.5px;">DL Supplier Quality Control</h2>
-                <h3 class="oe_slogan text-muted mb-4" style="font-size: 1.4rem; font-weight: 400;">Avaliação Automática do Desempenho dos seus Fornecedores (Vendor Rating)</h3>
-            </div>
-            <div class="col-lg-8 offset-lg-2 mt-2">
-                <p class="lead text-secondary" style="font-size: 1.2rem; line-height: 1.8;">
-                    Tenha controlo total sobre as falhas de entrega! Este módulo monitoriza todas as entradas no armazém, 
-                    compara o que foi pedido com o que foi entregue, e alerta automaticamente a sua equipa quando um 
-                    fornecedor não cumpre os padrões de qualidade acordados.
-                </p>
-            </div>
+    <!-- 1. Trust Badges Bar -->
+    <div class="dl-badges-bar">
+      <span class="dl-badge badge-community">✓ Odoo Community</span>
+      <span class="dl-badge badge-enterprise">★ Odoo Enterprise</span>
+      <span class="dl-badge badge-odoosh">☁ 100% Odoo.sh Ready</span>
+      <span class="dl-badge badge-i18n">⚡ English &amp; Portuguese (i18n)</span>
+      <span class="dl-badge badge-support">🛡️ Official Digitalub Support</span>
+    </div>
+
+    <!-- 2. Hero Header -->
+    <div class="dl-hero-header" id="overview">
+      <h1 class="dl-hero-title">Supplier Quality Control &amp; Vendor Rating</h1>
+      <p class="dl-hero-lead">Automate incoming goods inspection, delivery discrepancy tracking (ordered vs. received), and dynamic vendor reliability scoring in Odoo 17 Community &amp; Enterprise.</p>
+      <div class="dl-hero-actions">
+        <a href="https://demo.digitalub.ao" target="_blank" class="dl-btn dl-btn-primary">⚡ Explore Live Demo</a>
+        <a href="mailto:suporte@digitalub.ao" class="dl-btn dl-btn-secondary">💬 Contact Enterprise Support</a>
+      </div>
+    </div>
+
+    <!-- 3. Hero Banner -->
+    <div class="dl-hero-banner">
+      <img src="banner.png" alt="DL Supplier Quality Control - Vendor Rating & Delivery Performance Banner" />
+    </div>
+
+    <!-- 4. Key Metrics Strip -->
+    <div class="dl-metrics-grid">
+            <div class="dl-metric-card">
+        <div class="dl-metric-value">100%</div>
+        <p class="dl-metric-label">Automated OTIF Scoring</p>
+      </div>
+      <div class="dl-metric-card">
+        <div class="dl-metric-value">-85%</div>
+        <p class="dl-metric-label">Delivery Discrepancies</p>
+      </div>
+      <div class="dl-metric-card">
+        <div class="dl-metric-value">360°</div>
+        <p class="dl-metric-label">Supplier Audit Trail</p>
+      </div>
+      <div class="dl-metric-card">
+        <div class="dl-metric-value">Live BI</div>
+        <p class="dl-metric-label">Procurement Analytics</p>
+      </div>
+    </div>
+
+    <!-- 5. Navigation Anchor Bar -->
+    <div class="dl-nav-pills">
+      <a href="#overview" class="dl-nav-link">Overview</a>
+      <a href="#features" class="dl-nav-link">Key Features</a>
+      <a href="#walkthrough" class="dl-nav-link">Live Walkthrough</a>
+      <a href="#specs" class="dl-nav-link">Specifications</a>
+      <a href="#faq" class="dl-nav-link">FAQ</a>
+      <a href="#support" class="dl-nav-link">Support</a>
+    </div>
+
+    <!-- 6. Features Grid -->
+    <div class="dl-section-heading" id="features">
+      <h2>🚀 Enterprise Capabilities</h2>
+      <p>Purpose-built for operational stability, zero friction, and instant compliance.</p>
+    </div>
+    <div class="dl-feature-grid">
+            <div class="dl-feature-card">
+        <div class="dl-feature-icon">⚖️</div>
+        <h3>Automated Discrepancy Tracking</h3>
+        <p>Instantly compare demanded quantities on Purchase Orders against warehouse receipts. Automatically calculates short-shipments and over-deliveries with visual alerts.</p>
+      </div>
+      <div class="dl-feature-card">
+        <div class="dl-feature-icon">⭐</div>
+        <h3>Dynamic Vendor Reliability Rating</h3>
+        <p>Calculates dynamic vendor compliance scores based on fulfillment accuracy, on-time delivery rates, and return history to build reliable supplier rankings.</p>
+      </div>
+      <div class="dl-feature-card">
+        <div class="dl-feature-icon">🚨</div>
+        <h3>Intelligent Quality Rules &amp; Alerts</h3>
+        <p>Define custom tolerance thresholds per vendor or product family. Automatically flags recurring delivery failures and notifies purchasing managers.</p>
+      </div>
+      <div class="dl-feature-card">
+        <div class="dl-feature-icon">🏷️</div>
+        <h3>Supplier Profile Rating Badge</h3>
+        <p>Embeds real-time quality badges directly on Vendor contact forms and Purchase Orders, providing immediate decision support before placing new orders.</p>
+      </div>
+      <div class="dl-feature-card">
+        <div class="dl-feature-icon">📋</div>
+        <h3>Comprehensive Delivery Audit Trail</h3>
+        <p>Maintains an immutable historical record of every incoming shipment, logging reception dates, discrepancy metrics, and inspection notes.</p>
+      </div>
+      <div class="dl-feature-card">
+        <div class="dl-feature-icon">📊</div>
+        <h3>Executive Pivot &amp; BI Reporting</h3>
+        <p>Analyze supplier performance across fiscal quarters, product categories, and logistics hubs using interactive pivot views and printable PDF summaries.</p>
+      </div>
+    </div>
+
+    <!-- 7. Step-by-Step Visual Walkthrough -->
+    <div class="dl-section-heading" id="walkthrough">
+      <h2>📸 Step-by-Step Product Walkthrough</h2>
+      <p>Explore real-case operations in a pristine interface.</p>
+    </div>
+        <div class="dl-step-box">
+      <div class="dl-step-header">
+        <span class="dl-step-badge">Vendor Rating Console</span>
+        <h3 class="dl-step-title">Centralized Quality Inspection &amp; Vendor Performance Dashboard</h3>
+        <p class="dl-step-desc">
+          Unified control panel tracking incoming shipment compliance, discrepancy metrics, and automatic vendor rating calculations in real time.
+        </p>
+        <div class="dl-step-highlights">
+          <span class="dl-step-highlight-item">✓ Real-time Ordered vs Received Difference</span>
+          <span class="dl-step-highlight-item">✓ Visual Quality Warning Badges</span>
+          <span class="dl-step-highlight-item">✓ Seamless Purchase Order Integration</span>
         </div>
-    </section>
-
-    <section class="oe_container oe_dark px-4 py-5" style="background-color: #f8f9fa; border-radius: 16px;">
-        <div class="row text-center py-3">
-            <div class="col-12 mb-5">
-                <h3 class="oe_slogan text-dark font-weight-bold" style="font-size: 2rem; font-family: 'Inter', sans-serif;">Funcionalidades Principais</h3>
-            </div>
-            
-            <div class="col-md-4 mb-4 d-flex">
-                <div class="p-4 dl-vendor-card w-100 text-center">
-                    <div class="mb-4 d-inline-block p-3 rounded-circle" style="background-color: rgba(1, 126, 132, 0.05);">
-                        <i class="fa fa-balance-scale fa-3x dl-accent-color"></i>
-                    </div>
-                    <h4 class="font-weight-bold mb-3" style="font-size: 1.25rem; color: #212529;">Cálculo de Diferenças</h4>
-                    <p class="text-muted" style="font-size: 0.95rem; line-height: 1.6;">Veja instantaneamente na tela e no PDF se o fornecedor entregou mercadoria a menos do que a Ordem de Compra exigia.</p>
-                </div>
-            </div>
-            
-            <div class="col-md-4 mb-4 d-flex">
-                <div class="p-4 dl-vendor-card w-100 text-center">
-                    <div class="mb-4 d-inline-block p-3 rounded-circle" style="background-color: rgba(1, 126, 132, 0.05);">
-                        <i class="fa fa-cogs fa-3x dl-accent-color"></i>
-                    </div>
-                    <h4 class="font-weight-bold mb-3" style="font-size: 1.25rem; color: #212529;">Regras Automáticas</h4>
-                    <p class="text-muted" style="font-size: 0.95rem; line-height: 1.6;">Configure regras (ex: "Taxa de cumprimento inferior a 90%") e deixe que o Odoo notifique os gestores através das Atividades quando a regra for quebrada.</p>
-                </div>
-            </div>
-            
-            <div class="col-md-4 mb-4 d-flex">
-                <div class="p-4 dl-vendor-card w-100 text-center">
-                    <div class="mb-4 d-inline-block p-3 rounded-circle" style="background-color: rgba(1, 126, 132, 0.05);">
-                        <i class="fa fa-bar-chart fa-3x dl-accent-color"></i>
-                    </div>
-                    <h4 class="font-weight-bold mb-3" style="font-size: 1.25rem; color: #212529;">Dashboards Avançados</h4>
-                    <p class="text-muted" style="font-size: 0.95rem; line-height: 1.6;">Relatório dinâmico em Pivot com o histórico total das entregas. Identifique imediatamente os piores e os melhores parceiros de negócio.</p>
-                </div>
-            </div>
+      </div>
+      <div class="dl-mockup-frame">
+        <div class="dl-mockup-bar">
+          <div class="dl-mockup-dots">
+            <span class="dl-dot dl-dot-red"></span>
+            <span class="dl-dot dl-dot-yellow"></span>
+            <span class="dl-dot dl-dot-green"></span>
+          </div>
+          <span class="dl-mockup-title">DL Supplier Quality Control — Vendor Audit Dashboard</span>
         </div>
-    </section>
-
-    <section class="oe_container px-3 py-5">
-        <div class="row align-items-center py-4">
-            <div class="col-lg-10 offset-lg-1">
-                <div class="p-4 p-md-5 dl-highlight-box">
-                    <h3 class="font-weight-bold text-dark mb-3" style="font-size: 1.6rem;"><i class="fa fa-id-card dl-accent-color mr-2"></i> Ficha de Fornecedor Inteligente</h3>
-                    <p class="text-secondary mb-0" style="font-size: 1.1rem; line-height: 1.7; text-align: justify;">
-                        Na ficha de cada fornecedor (Contacto), o sistema adiciona uma métrica inteligente de <strong>Taxa de Cumprimento Global</strong>. 
-                        Se o fornecedor violar as Regras de Qualidade parametrizadas, o Odoo exibe um alerta visual destacado a vermelho de <span class="dl-badge-red">Falhas Recorrentes</span>, 
-                        fornecendo dados valiosos para o departamento de Compras mitigar riscos e tomar melhores decisões de aprovisionamento.
-                    </p>
-                </div>
-            </div>
+        <div class="dl-mockup-content">
+          <img src="main_screenshot.png" alt="Supplier Quality Control Dashboard" />
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section class="oe_container oe_dark text-center px-3 py-5" style="background-color: #f8f9fa; border-radius: 16px; border-top: 4px solid #017e84;">
-        <div class="row py-3">
-            <div class="col-12">
-                <h2 class="font-weight-bold mb-3" style="font-size: 2rem; color: #212529;">Quer melhorar a Qualidade do seu Armazém?</h2>
-                <p class="lead text-muted mb-4" style="font-size: 1.1rem;">
-                    Módulo testado, otimizado e desenvolvido sob as estritas regras de arquitetura e desempenho do ecossistema Odoo.
-                </p>
-                <div class="mt-4">
-                    <a href="mailto:suporte@digitalub.ao" class="btn btn-primary btn-lg dl-btn-accent shadow px-5 py-3" style="font-weight: 600; border-radius: 30px; font-size: 1.1rem;">
-                        <i class="fa fa-envelope mr-2"></i> Fale Connosco
-                    </a>
-                </div>
-            </div>
+    <!-- 8. Technical Architecture & Compatibility -->
+    <div class="dl-section-heading" id="specs">
+      <h2>📋 Technical Specifications &amp; Compatibility</h2>
+      <p>Clean architecture adhering strictly to Odoo's official framework guidelines.</p>
+    </div>
+    <table class="dl-specs-table">
+                <tr>
+            <td><strong>Odoo Compatibility</strong></td>
+            <td>Odoo 17.0 (Community &amp; Enterprise Editions)</td>
+          </tr>
+          <tr>
+            <td><strong>Cloud &amp; Hosting</strong></td>
+            <td>100% Odoo.sh Ready, On-Premise (Ubuntu/Debian), Docker, Cloud VPS</td>
+          </tr>
+          <tr>
+            <td><strong>Dependencies</strong></td>
+            <td><code>base</code>, <code>stock</code>, <code>purchase</code>, <code>purchase_stock</code>, <code>mail</code></td>
+          </tr>
+          <tr>
+            <td><strong>Language Support</strong></td>
+            <td>English (en_US), Portuguese / Português (pt_AO, pt_PT, pt_BR)</td>
+          </tr>
+          <tr>
+            <td><strong>Architecture</strong></td>
+            <td>Native Odoo ORM Models &amp; Automated Delivery History Observers</td>
+          </tr>
+    </table>
+
+    <!-- 9. Pre-Sales FAQ -->
+    <div class="dl-section-heading" id="faq">
+      <h2>❓ Frequently Asked Questions (FAQ)</h2>
+      <p>Straightforward answers to key architectural, security, and licensing queries.</p>
+    </div>
+    <div class="dl-faq-container">
+            <div class="dl-faq-item">
+        <div class="dl-faq-q">How does the module calculate vendor quality scores?</div>
+        <div class="dl-faq-a">The module compares the total quantities demanded in Purchase Orders against the actual quantities received in warehouse pickings. It calculates delivery discrepancy ratios, return rates, and on-time compliance to maintain a live vendor performance rating.</div>
+      </div>
+      <div class="dl-faq-item">
+        <div class="dl-faq-q">Does it handle partial shipments and backorders?</div>
+        <div class="dl-faq-a">Yes. When a vendor delivers in installments, the module tracks each incoming picking against the parent Purchase Order, ensuring accurate multi-delivery accounting without skewing discrepancy rates.</div>
+      </div>
+      <div class="dl-faq-item">
+        <div class="dl-faq-q">Can I configure custom tolerance thresholds per supplier?</div>
+        <div class="dl-faq-a">Absolutely. You can define custom quality rules with specific percentage tolerances (e.g. allowing +/- 2% on bulk commodities while enforcing 0% on serialized or high-value items).</div>
+      </div>
+      <div class="dl-faq-item">
+        <div class="dl-faq-q">Is this module compatible with Odoo.sh?</div>
+        <div class="dl-faq-a">Yes, 100%. The module strictly follows standard Odoo ORM development guidelines with zero external system binaries or C-library dependencies.</div>
+      </div>
+      <div class="dl-faq-item">
+        <div class="dl-faq-q">How do I receive technical support or request custom enhancements?</div>
+        <div class="dl-faq-a">Digitalub Angola provides dedicated technical support via email at <a href="mailto:suporte@digitalub.ao">suporte@digitalub.ao</a>. We offer implementation guidance, workflow calibration, and custom ERP development.</div>
+      </div>
+    </div>
+
+    <!-- 10. Ecosystem Cross-Promotion -->
+    <div class="dl-ecosystem-box">
+      <h3>🌐 DIGITALUB Enterprise Software Suite</h3>
+      <p class="dl-sub">Maximize your ERP ROI with our specialized Odoo solutions for hospitality, retail, taxation, and logistics.</p>
+      <div class="dl-eco-grid">
+        <div class="dl-eco-card">
+          <h4>🏨 DL Hotel Management</h4>
+          <p>Complete PMS with room folio, front-desk reservation calendar, and POS integration.</p>
         </div>
-    </section>
-    
-</div>
+        <div class="dl-eco-card">
+          <h4>📑 DL Withholding Tax (Retenção)</h4>
+          <p>Automated 6.5% tax withholding on supplier invoices compliant with Angolan AGT rules.</p>
+        </div>
+        <div class="dl-eco-card">
+          <h4>📱 DL Mobile Barcode Scanner</h4>
+          <p>Real-time warehouse scanning for receipts, deliveries, and inventory stock moves.</p>
+        </div>
+        <div class="dl-eco-card">
+          <h4>🔢 DL Invoice Line Sequence</h4>
+          <p>Clean sequential item indexing on sales orders, quotes, and fiscal invoices.</p>
+        </div>
+      </div>
+    </div>
 
+    <!-- 11. Support & Guarantee Hub -->
+    <div class="dl-support-hub" id="support">
+      <h4>🛡️ Certified DIGITALUB Guarantee &amp; Support</h4>
+      <p>Developed and maintained by <strong>DIGITALUB ANGOLA, LDA</strong>. We provide enterprise deployment support, customization services, and bug fixes.</p>
+      <ul class="dl-support-list">
+        <li>📧 <strong>Support Email:</strong> <a href="mailto:suporte@digitalub.ao">suporte@digitalub.ao</a></li>
+        <li>🌐 <strong>Official Website:</strong> <a href="https://www.digitalub.ao" target="_blank">www.digitalub.ao</a></li>
+        <li>🖥️ <strong>Live Demonstration:</strong> <a href="https://demo.digitalub.ao" target="_blank">demo.digitalub.ao</a></li>
+      </ul>
+    </div>
+
+    <!-- 12. Footer -->
+    <div class="dl-footer">
+      <p>© 2026 <strong>DIGITALUB ANGOLA, LDA</strong>. All Rights Reserved. Odoo is a trademark of Odoo S.A.</p>
+    </div>
+
+  </div>
 </body>
 </html>

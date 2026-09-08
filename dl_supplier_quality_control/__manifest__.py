@@ -1,22 +1,25 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'DL Supplier Quality Control',
-    'version': '17.0.1.0.0',
+    'name': 'DL Supplier Quality Control - Vendor Rating & Delivery Performance',
+    'version': '17.0.1.0.1',
     'category': 'Inventory/Purchases',
-    'summary': 'Controlo de Qualidade, Vendor Rating e Avaliação de Entregas de Fornecedores',
+    'summary': 'Supplier Quality Control, Vendor Rating, Delivery Discrepancy Tracking & On-Time In-Full (OTIF) Evaluation',
     'description': """
-        Módulo avançado para avaliar o cumprimento de entregas dos fornecedores.
-        - Compara quantidade demandada vs recebida.
-        - Histórico consolidado e relatórios de desempenho.
-        - Regras automáticas de alerta (falhas recorrentes, taxa de cumprimento).
-        - Marcação visual no cadastro do fornecedor.
-        - Notificações automáticas para compras/armazém.
+        Advanced Supplier Quality Control & Vendor Performance Rating for Odoo 17 Community & Enterprise.
+        Key Features:
+        - Automated comparison of ordered vs. received quantities on warehouse receipts.
+        - Dynamic Vendor Rating calculation based on fulfillment accuracy and return rates.
+        - Configurable quality alert rules (recurring delivery failures, tolerance thresholds).
+        - Visual vendor rating badges directly on Contact and Purchase Order views.
+        - Consolidated delivery history log with complete audit trail.
+        - Multi-dimensional BI and Pivot analysis for procurement intelligence.
     """,
-    'author': 'Digitalub Angola',
+    'author': 'DIGITALUB ANGOLA, LDA',
     'website': 'https://www.digitalub.ao',
-    'license': 'OPL-1',  # Alterado para OPL-1 porque o módulo é pago
+    'support': 'suporte@digitalub.ao',
+    'license': 'OPL-1',
 
-    # Configuração de Preço (Conversão de $85 USD)
+    # Configuração de Preço
     'price': 79.00,
     'currency': 'EUR',
 
@@ -38,8 +41,9 @@
         'views/product_template_views.xml',
     ],
     
-    # Imagem de capa para a Loja Odoo
+    # Imagens de destaque na Loja Odoo
     'images': [
+        'static/description/banner.png',
         'static/description/main_screenshot.png'
     ],
     
