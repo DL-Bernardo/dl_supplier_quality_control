@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Supplier Quality Control & Vendor Evaluation',
-    'version': '17.0.1.0.2',
+    'version': '17.0.1.0.3',
     'category': 'Inventory/Purchases',
     'summary': 'Automated Inspection Points, Vendor Rating Matrix, Delivery Discrepancy Tracking & Defect Management',
     'description': """
@@ -44,7 +44,6 @@
     # Imagens de destaque na Loja Odoo
     'images': [
         'static/description/banner.png',
-        'static/description/main_screenshot.png'
     ],
     
     'installable': True,
