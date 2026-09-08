@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'DL Supplier Quality Control - Vendor Rating & Delivery Performance',
-    'version': '17.0.1.0.1',
+    'name': 'Supplier Quality Control & Vendor Evaluation',
+    'version': '17.0.1.0.2',
     'category': 'Inventory/Purchases',
-    'summary': 'Supplier Quality Control, Vendor Rating, Delivery Discrepancy Tracking & On-Time In-Full (OTIF) Evaluation',
+    'summary': 'Automated Inspection Points, Vendor Rating Matrix, Delivery Discrepancy Tracking & Defect Management',
     'description': """
         Advanced Supplier Quality Control & Vendor Performance Rating for Odoo 17 Community & Enterprise.
         Key Features:
@@ -20,7 +20,7 @@
     'license': 'OPL-1',
 
     # Configuração de Preço
-    'price': 79.00,
+    'price': 65.0,
     'currency': 'EUR',
 
     'depends': [
