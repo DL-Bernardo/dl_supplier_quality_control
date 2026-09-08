@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Supplier Quality Control & Vendor Evaluation',
-    'version': '17.0.1.0.3',
+    'version': '17.0.1.0.4',
     'category': 'Inventory/Purchases',
     'summary': 'Automated Inspection Points, Vendor Rating Matrix, Delivery Discrepancy Tracking & Defect Management',
     'description': """
@@ -20,7 +20,7 @@
     'license': 'OPL-1',
 
     # Configuração de Preço
-    'price': 65.0,
+    'price': 79.0,
     'currency': 'EUR',
 
     'depends': [
