@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Supplier Quality Control & Vendor Evaluation',
-    'version': '17.0.1.0.5',
+    'version': '17.0.1.0.6',
     'category': 'Inventory/Purchases',
     'summary': 'Automated Inspection Points, Vendor Rating Matrix, Delivery Discrepancy Tracking & Defect Management',
     'description': """
