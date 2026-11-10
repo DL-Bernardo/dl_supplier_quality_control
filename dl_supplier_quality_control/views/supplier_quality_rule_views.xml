@@ -32,11 +32,11 @@
         <field name="name">supplier.quality.rule.tree</field>
         <field name="model">supplier.quality.rule</field>
         <field name="arch" type="xml">
-            <tree string="Regras de Qualidade">
+            <list string="Regras de Qualidade">
                 <field name="name"/>
                 <field name="min_incomplete_deliveries"/>
                 <field name="period_days"/>
-            </tree>
+            </list>
         </field>
     </record>
 </odoo>
