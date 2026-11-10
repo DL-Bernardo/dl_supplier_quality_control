@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 from odoo import models, fields, api
+
 
 class StockMove(models.Model):
     _inherit = 'stock.move'
@@ -13,9 +15,8 @@ class StockMove(models.Model):
     @api.depends('product_uom_qty', 'quantity', 'picking_id.picking_type_code')
     def _compute_qty_difference(self):
         for move in self:
-            # Só fazemos este cálculo para Receções (incoming)
             if move.picking_id.picking_type_code == 'incoming':
-                # Odoo 17 usa 'quantity' para o que foi feito, e 'product_uom_qty' para a demanda
-                move.qty_difference = move.quantity - move.product_uom_qty
+                done_qty = getattr(move, 'quantity', getattr(move, 'quantity_done', 0.0))
+                move.qty_difference = done_qty - move.product_uom_qty
             else:
                 move.qty_difference = 0.0
