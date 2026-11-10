@@ -1,15 +1,17 @@
+# -*- coding: utf-8 -*-
 from odoo import models, fields, api
+
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     is_frequent_failer = fields.Boolean(
-        string='Falhas Recorrentes de Entrega', 
+        string='Falhas Recorrentes de Entrega',
         default=False,
         help="Marcado automaticamente se o fornecedor quebrar as regras de qualidade."
     )
     delivery_compliance_rate = fields.Float(
-        string='Taxa Global de Cumprimento (%)', 
+        string='Taxa Global de Cumprimento (%)',
         compute='_compute_compliance_rate'
     )
 
@@ -25,3 +27,10 @@ class ResPartner(models.Model):
                     partner.delivery_compliance_rate = 100.0
             else:
                 partner.delivery_compliance_rate = 100.0
+
+    def action_view_supplier_deliveries(self):
+        self.ensure_one()
+        action = self.env.ref('dl_supplier_quality_control.action_supplier_delivery_history').read()[0]
+        action['domain'] = [('partner_id', '=', self.id)]
+        action['context'] = {'default_partner_id': self.id}
+        return action

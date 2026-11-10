@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Supplier Quality Control & Vendor Evaluation',
-    'version': '17.0.1.0.7',
+    'version': '17.0.1.0.8',
     'category': 'Inventory/Purchases',
     'summary': 'Automated Inspection Points, Vendor Rating Matrix, Delivery Discrepancy Tracking & Defect Management',
     'description': """
-        Advanced Supplier Quality Control & Vendor Performance Rating for Odoo 17 Community & Enterprise.
+        Advanced Supplier Quality Control & Vendor Performance Rating for Odoo 15, 16, 17, 18, 19 & 20 (Community & Enterprise).
         Key Features:
         - Automated comparison of ordered vs. received quantities on warehouse receipts.
         - Dynamic Vendor Rating calculation based on fulfillment accuracy and return rates.
@@ -18,16 +18,13 @@
     'website': 'https://www.digitalub.ao',
     'support': 'suporte@digitalub.ao',
     'license': 'OPL-1',
-
-    # Configuração de Preço
     'price': 79.0,
     'currency': 'USD',
-
     'depends': [
-        'base', 
-        'stock', 
-        'purchase', 
-        'purchase_stock', 
+        'base',
+        'stock',
+        'purchase',
+        'purchase_stock',
         'mail'
     ],
     'data': [
@@ -40,12 +37,12 @@
         'views/stock_picking_report_views.xml',
         'views/product_template_views.xml',
     ],
-    
-    # Imagens de destaque na Loja Odoo
     'images': [
         'static/description/banner.png',
+        'static/description/step1_quality_rules.png',
+        'static/description/step2_delivery_check.png',
+        'static/description/step3_vendor_rating.png',
     ],
-    
     'installable': True,
     'application': False,
     'auto_install': False,

@@ -5,15 +5,13 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
-            <!-- Ribbon (Fita) no canto superior direito -->
-            <xpath expr="//widget[@name='web_ribbon']" position="after">
-                <widget name="web_ribbon" title="Falhas Recorrentes" bg_color="text-bg-danger" invisible="not is_frequent_failer"/>
+            <xpath expr="//div[@name='button_box']" position="after">
                 <field name="is_frequent_failer" invisible="1"/>
+                <widget name="web_ribbon" title="Falhas Recorrentes" bg_color="bg-danger" invisible="not is_frequent_failer"/>
             </xpath>
-            
-            <!-- Botão Estatístico com a % de Cumprimento -->
+
             <xpath expr="//div[@name='button_box']" position="inside">
-                <button class="oe_stat_button" type="object" name="action_view_partner_invoices" icon="fa-truck">
+                <button class="oe_stat_button" type="object" name="action_view_supplier_deliveries" icon="fa-truck">
                     <div class="o_stat_info">
                         <field name="delivery_compliance_rate" class="o_stat_value" widget="percentage"/>
                         <span class="o_stat_text">Cumprimento</span>
