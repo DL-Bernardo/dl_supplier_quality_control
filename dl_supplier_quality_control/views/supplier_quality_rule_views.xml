@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <form string="Regra de Qualidade">
                 <sheet>
-                    <widget name="web_ribbon" title="Arquivado" bg_color="bg-danger" invisible="active"/>
+                    <widget name="web_ribbon" title="Arquivado" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
                     <div class="oe_title">
                         <h1><field name="name" placeholder="Ex: Regra de Falha Crítica"/></h1>
                     </div>
