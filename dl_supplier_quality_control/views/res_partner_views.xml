@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//div[@name='button_box']" position="after">
                 <field name="is_frequent_failer" invisible="1"/>
-                <widget name="web_ribbon" title="Falhas Recorrentes" bg_color="bg-danger" invisible="not is_frequent_failer"/>
+                <widget name="web_ribbon" title="Falhas Recorrentes" bg_color="bg-danger" attrs="{'invisible': [('is_frequent_failer', '=', False)]}"/>
             </xpath>
 
             <xpath expr="//div[@name='button_box']" position="inside">
