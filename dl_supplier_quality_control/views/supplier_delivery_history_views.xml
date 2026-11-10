@@ -5,7 +5,7 @@
         <field name="name">supplier.delivery.history.tree</field>
         <field name="model">supplier.delivery.history</field>
         <field name="arch" type="xml">
-            <tree string="Histórico de Entregas" create="0" edit="0" delete="0" decoration-danger="is_incomplete">
+            <list string="Histórico de Entregas" create="0" edit="0" delete="0" decoration-danger="is_incomplete">
                 <field name="date_done"/>
                 <field name="partner_id"/>
                 <field name="purchase_id"/>
@@ -15,7 +15,7 @@
                 <field name="qty_difference"/>
                 <field name="compliance_percent" widget="percentage"/>
                 <field name="is_incomplete" invisible="1"/>
-            </tree>
+            </list>
         </field>
     </record>
 
