@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Supplier Quality Control & Vendor Evaluation',
-    'version': '19.0.1.0.8',
+    'version': '20.0.1.0.8',
     'category': 'Inventory/Purchases',
     'summary': 'Automated Inspection Points, Vendor Rating Matrix, Delivery Discrepancy Tracking & Defect Management',
     'description': """
@@ -28,7 +28,7 @@
         'mail'
     ],
     'data': [
-        'security/ir.model.access.csv',
+        'security/ir.access.csv',
         'views/stock_picking_views.xml',
         'views/res_partner_views.xml',
         'views/supplier_delivery_history_views.xml',

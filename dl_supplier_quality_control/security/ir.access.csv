@@ -1,0 +1,3 @@
+id,name,model_id,group_id/id,operation,domain
+access_supplier_delivery_history,access.supplier.delivery.history,supplier.delivery.history,stock.group_stock_user,crud,
+access_supplier_quality_rule,access.supplier.quality.rule,supplier.quality.rule,stock.group_stock_manager,crud,
